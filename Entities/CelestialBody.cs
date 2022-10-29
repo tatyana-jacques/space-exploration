@@ -5,14 +5,21 @@ using System.Threading.Tasks;
 
 namespace space_exploration
 {
-    public class CelestialBody
+    public abstract class CelestialBody
     {
-        public string? Name {get;set;} 
+
+        public CelestialBody( string name, float size, int age, float mass, float gravity){
+            Name = name;
+            Size = size;
+            Age = age;
+            Mass = mass;
+            Gravity = gravity;
+
+        }
+        public string Name {get;set;} 
         public double Size {get;set;}
         public int Age {get;set;}
-
-        public double Mass {get;set;}
-
-        public double Gravity {get;set;}
+        public float Mass {get;set;}
+        public float Gravity {get;set;}
     }
 }

@@ -7,7 +7,7 @@ namespace space_exploration
         RedSuperGiant,
         Supernova,
         WhiteDwarf,
-        BlackHole
+        BlackHole,
 
     }
 }

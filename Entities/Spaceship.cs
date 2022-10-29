@@ -14,13 +14,23 @@ namespace space_exploration
 
         public float CollectCapacity {get;set;}
 
+        public float MaxSpeed {get;set;}
 
-        public string IsOrbiting (Star star){
+        public Spaceship (float maxLife, float actualLife, bool isUsable, float collectCapacity, float MaxSpeed){
+            MaxLife = maxLife;
+            ActualLife = actualLife;
+            IsUsable = isUsable;
+            CollectCapacity = collectCapacity;
+            
+        }
+
+
+        public void IsOrbiting (Star star){
 
             
-            return "Star Characteristics: Star Temperature: " 
+            Console.WriteLine ("This Spaceship is orbiting:" + star.Name + "Star Temperature: " 
             + star.Temperature + "; Star Luminosity: " + star.Luminosity
-            + "; Star State: " + star.StarState + ".";
+            + "; Star State: " + star.StarState + ".");
 
         }
     }

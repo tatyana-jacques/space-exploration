@@ -9,33 +9,41 @@ namespace space_exploration
     {
         public float CollectMaxResources { get; set; }
 
-        public string IsCollecting(Planet planet)
-        {
-            float currentResources = 0f;
-            float finalResources = 0f;
-            int index = 0;
-        
-            
-            while (currentResources < CollectMaxResources)
-            {
-                currentResources += planet.AvailableResources[index].Amount;
-                index++;
-             
-            }
-
-            if (currentResources < CollectMaxResources)
-            {
-                finalResources = currentResources;
-            }
-            else {
-                finalResources = CollectMaxResources;
-            }
-
-
-            return "Resources collected: " + finalResources;
+        public CollectSpaceship (float maxLife, float actualLife, bool isUsable, float collectCapacity, float collectMaxResource, float maxSpeed): 
+        base (maxLife, actualLife, isUsable, collectCapacity, maxSpeed){
+            CollectMaxResources = collectMaxResource;
 
         }
+        
+
+        public void ChooseResource(Planet planet)
+        {
+           
+            {
+            Console.WriteLine("Choose a resource: ");
+
+            foreach (Resource x in planet.AvailableResources)
+            {
+                Console.WriteLine(x.Name);
+            }
+
+            var pickedResourceName = Console.ReadLine();
+
+            try
+            {
+                Resource existingResource = planet.AvailableResources.Where(p => p.Name == pickedResourceName).First();
+                Console.WriteLine("Chosen resource: " + existingResource.Name + "; Amount: " + existingResource.Amount);
+            }
+            catch
+            {
+                throw new NonExistentResourceException();
+
+            }
+            }
+        }
+
+
     }
-
-
 }
+
+
