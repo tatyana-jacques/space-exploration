@@ -9,11 +9,7 @@ namespace space_exploration
     {
         public float CollectMaxResources { get; set; }
 
-        public CollectSpaceship (float maxLife, float actualLife, bool isUsable, float collectCapacity, float collectMaxResource, float maxSpeed): 
-        base (maxLife, actualLife, isUsable, collectCapacity, maxSpeed){
-            CollectMaxResources = collectMaxResource;
-
-        }
+      
         
 
         public void ChooseResource(Planet planet)

@@ -7,7 +7,7 @@ namespace space_exploration
 {
     public interface IOrbitable
     {
-        // GetOrbitData();
+        Dictionary <string,string> OrbitData();
         
     }
 }

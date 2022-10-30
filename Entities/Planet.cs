@@ -5,16 +5,26 @@ using System.Threading.Tasks;
 
 namespace space_exploration
 {
-    public class Planet: CelestialBody
+    public class Planet : CelestialBody, IOrbitable
     {
 
-        public Planet ( string name, float size, int age, float mass, float gravity, bool isHabitable): base (name, size, age, mass, gravity)
-        {
-         IsHabitable = isHabitable;   
-        }
-        public bool IsHabitable {get;set;}
-        public List <Resource> AvailableResources {get;set;}
+        public bool IsHabitable { get; set; }
+        public List<Resource> AvailableResources { get; set; }
 
-        
+        public Dictionary<string, string> OrbitData()
+        {
+            return new Dictionary<string, string>(){
+            {"Name", Name.ToString()},
+            {"Size", Size.ToString()},
+            {"Age", Age.ToString()},
+            {"Mass", Mass.ToString()},
+            {"Gravity", Gravity.ToString()},
+            {"Is Habitable ", IsHabitable.ToString()},
+            {"Resources: ", string.Join(", ", AvailableResources.Select(r=>r.Name))}
+
+        };
+
+
+        }
     }
 }

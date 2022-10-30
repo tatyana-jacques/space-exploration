@@ -5,8 +5,9 @@ bool gameIsRunning = true;
 Resource water = new Resource(name: "water", amount: 1000f);
 Resource onyx = new Resource(name: "onyx", amount: 500f);
 Resource iron = new Resource(name: "iron", amount: 1000f);
+Resource gold = new Resource(name: "gold", amount: 5f);
 
-Planet mars = new Planet(name: "Mars", size: 300f, age: 1000000, mass: 500f, gravity: 40f, isHabitable: true);
+Planet mars = new Planet();
 mars.AvailableResources = new List<Resource> { water, onyx, iron };
 
 CollectSpaceship enterprise = new CollectSpaceship(

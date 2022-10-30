@@ -13,7 +13,7 @@ namespace space_exploration
             Name = name;
             Amount = amount;
         }
-        public string? Name {set;get;}
+        public string Name {set;get;}
         public float Amount {set;get;}
 
 

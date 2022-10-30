@@ -8,15 +8,24 @@ namespace space_exploration
     public class Star: CelestialBody, IOrbitable
     {
 
-        public Star ( string name, float size, int age, int mass, float gravity, float temperature, float luminosity, State state ) : base (name, size, age, mass, gravity)
-        {
-            Temperature = temperature;
-            Luminosity = luminosity;
-            StarState = state;
-
-        }
+       
         public float Temperature {get;set;}
         public float Luminosity {get;set;}
         public State StarState {get;set;}
+
+public Dictionary <string,string> OrbitData(){
+        return new Dictionary <string,string>(){
+            {"Name", Name.ToString()},
+            {"Size", Size.ToString()},
+            {"Age", Age.ToString()},
+            {"Mass", Mass.ToString()},
+            {"Gravity", Gravity.ToString()},
+            {"Temperature", Temperature.ToString()},
+            {"Luminosidade",Luminosity.ToString()},
+            {"State", StarState.ToString()}
+
+        };
+
+}
     }
 }

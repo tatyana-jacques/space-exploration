@@ -9,11 +9,6 @@ namespace space_exploration
     {
         public float AttackDamage {get;set;}
 
-         public WarSpaceship (float maxLife, float actualLife, bool isUsable, float collectCapacity, float attackDamage, float maxSpeed): 
-        base (maxLife, actualLife, isUsable, collectCapacity, maxSpeed){
-            AttackDamage = attackDamage;
-
-        }
 
         public string Attack (Spaceship spaceship){
 

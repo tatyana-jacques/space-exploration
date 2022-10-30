@@ -11,11 +11,6 @@ namespace space_exploration
 
         public string CurrentPlanet {get;set;}
 
-         public TransportSpaceship (float maxLife, float actualLife, bool isUsable, float collectCapacity, int passagersAmount, string currentPlanet, float maxSpeed): 
-        base (maxLife, actualLife, isUsable, collectCapacity, maxSpeed){
-            PassagersAmount = passagersAmount;
-            CurrentPlanet = currentPlanet;
-
-        }
+         
     }
 }
