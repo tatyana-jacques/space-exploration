@@ -19,18 +19,11 @@ namespace space_exploration
 
                 var pickedResourceName = Console.ReadLine();
 
-                try
-                {
                     Resource existingResource = planet.AvailableResources.Where(p => p.Name == pickedResourceName).First();
                     Console.WriteLine("Chosen resource: " + existingResource.Name + "; Amount: " + existingResource.Amount);
                     resourceIsChose = true;
                     ChoseResource = existingResource;
-
-                }
-                catch
-                {
-                    throw new NonExistentResourceException();
-                }
+               
 
             }
         }

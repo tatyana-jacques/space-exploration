@@ -107,10 +107,18 @@ while (gameIsRunning == true)
 
                 if (chosenSpaceship.GetType().ToString() == "space_exploration.CollectSpaceship")
                 {
+                    try{
                     Console.WriteLine("Choose a resource: ");
-                    enterprise.ChooseResource(chosenDestination);
-                    enterprise.CollectResource(chosenDestination);
+                    var spaceshipCollectConverted = (CollectSpaceship)chosenSpaceship;
+                    spaceshipCollectConverted.ChooseResource(chosenDestination);
+                    spaceshipCollectConverted.CollectResource(chosenDestination);
+                    }
+                    catch (InsufficientResource exception)
+                    {
+                        Console.WriteLine (exception.Message);
+                    }
                 }
+
                 else if (chosenSpaceship.GetType().ToString() == "space_exploration.WarSpaceship")
                 {
                     Console.WriteLine(@$"Choose a spaceship to attack: 
@@ -123,7 +131,8 @@ while (gameIsRunning == true)
                         Spaceship attackedChosenSpaceship = spaceships[attackedSpaceshipChoice];
                         Console.WriteLine(attackedChosenSpaceship.Model);
                         Console.WriteLine(attackedChosenSpaceship.GetType().ToString());
-                        falcon.Attack (attackedChosenSpaceship);
+                        var spaceshipWarConverted = (WarSpaceship)chosenSpaceship;
+                        spaceshipWarConverted.Attack(attackedChosenSpaceship);
                     }
                     catch (FormatException e)
                     {
@@ -138,13 +147,16 @@ while (gameIsRunning == true)
                 }
 
                 else
-                    {
-
-                    }
-
-
+                {
+                    var spaceshipTransportConverted = (TransportSpaceship)chosenSpaceship;
+                    Console.WriteLine(@$"Spaceship passagers amount: {spaceshipTransportConverted.PassagersAmount}. 
+                    Spaceship actual planet: {chosenDestination.Name}.");
 
                 }
+
+
+
+            }
             catch (FormatException e)
             {
                 Console.WriteLine("Error: " + e.Message);
@@ -157,6 +169,7 @@ while (gameIsRunning == true)
             }
 
         }
+        destinationIsChose = false;
 
 
     }

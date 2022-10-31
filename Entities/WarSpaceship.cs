@@ -7,7 +7,7 @@ namespace space_exploration
 
 
         public string Attack (Spaceship attackedSpaceship){
-            Console.WriteLine(attackedSpaceship.Model + "is being attacked.");
+            Console.WriteLine(attackedSpaceship.Model + " is being attacked.");
 
             attackedSpaceship.IsBeingDamaged(AttackDamage);
             
