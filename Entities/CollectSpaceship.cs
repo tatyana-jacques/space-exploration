@@ -1,42 +1,55 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace space_exploration
 {
     public class CollectSpaceship : Spaceship
     {
-        public float CollectMaxResources { get; set; }
-
-      
-        
-
+        private bool resourceIsChose = false;
+        public Resource ChoseResource { get; set; }
+        public float CollectCapacity { get; set; }
         public void ChooseResource(Planet planet)
         {
-           
+            while (resourceIsChose == false)
             {
-            Console.WriteLine("Choose a resource: ");
+                Console.WriteLine("Choose a resource: ");
 
-            foreach (Resource x in planet.AvailableResources)
-            {
-                Console.WriteLine(x.Name);
-            }
+                foreach (Resource x in planet.AvailableResources)
+                {
+                    Console.WriteLine(x.Name);
+                }
 
-            var pickedResourceName = Console.ReadLine();
+                var pickedResourceName = Console.ReadLine();
 
-            try
-            {
-                Resource existingResource = planet.AvailableResources.Where(p => p.Name == pickedResourceName).First();
-                Console.WriteLine("Chosen resource: " + existingResource.Name + "; Amount: " + existingResource.Amount);
-            }
-            catch
-            {
-                throw new NonExistentResourceException();
+                try
+                {
+                    Resource existingResource = planet.AvailableResources.Where(p => p.Name == pickedResourceName).First();
+                    Console.WriteLine("Chosen resource: " + existingResource.Name + "; Amount: " + existingResource.Amount);
+                    resourceIsChose = true;
+                    ChoseResource = existingResource;
 
-            }
+                }
+                catch
+                {
+                    throw new NonExistentResourceException();
+                }
+
             }
         }
+
+        public void CollectResource(Planet planet)
+        {
+            Console.WriteLine($"Collecting {ChoseResource.Name} from {planet.Name}");
+            Console.WriteLine($"Current resource amount: " + ChoseResource.Amount);
+
+            if (ChoseResource.Amount < CollectCapacity)
+            {
+                throw new InsufficientResource(ChoseResource.Name);
+
+            }
+            ChoseResource.Amount -= CollectCapacity;
+            Console.WriteLine($"Current resource amount: " + ChoseResource.Amount);
+
+        }
+
 
 
     }

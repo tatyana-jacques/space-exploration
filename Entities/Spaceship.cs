@@ -37,14 +37,12 @@ namespace space_exploration
 
         }
 
-        public void IsDamaged (float damage){
+        public void IsBeingDamaged (float damage){
             if (ActualLife==0){
                 throw new InsufficientLife();
             }
             ActualLife = damage> ActualLife ? 0 : ActualLife - damage;
-
             CheckIfIsUsable();
-
         }
 
         private void CheckIfIsUsable(){

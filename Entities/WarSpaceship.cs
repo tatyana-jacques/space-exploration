@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace space_exploration
 {
@@ -10,16 +6,12 @@ namespace space_exploration
         public float AttackDamage {get;set;}
 
 
-        public string Attack (Spaceship spaceship){
+        public string Attack (Spaceship attackedSpaceship){
+            Console.WriteLine(attackedSpaceship.Model + "is being attacked.");
 
-            spaceship.ActualLife -= AttackDamage;
-            if (spaceship.ActualLife<= spaceship.MaxLife * 0.2)
-            {
-                spaceship.IsUsable = false;
-            }
-
-
-            return "Attacked spaceship life is: " + spaceship.ActualLife + " ; The spaceship is usable: " + spaceship.IsUsable;
+            attackedSpaceship.IsBeingDamaged(AttackDamage);
+            
+            return "Attacked spaceship life is: " + attackedSpaceship.ActualLife + " ; The spaceship is usable: " + attackedSpaceship.IsUsable;
         }
     }
 }
