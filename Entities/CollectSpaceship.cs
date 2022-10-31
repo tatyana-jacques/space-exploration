@@ -10,8 +10,6 @@ namespace space_exploration
         {
             while (resourceIsChose == false)
             {
-                Console.WriteLine("Choose a resource: ");
-
                 foreach (Resource x in planet.AvailableResources)
                 {
                     Console.WriteLine(x.Name);

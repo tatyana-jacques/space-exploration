@@ -78,7 +78,7 @@ var spaceships = new Dictionary<int, Spaceship>
 
 while (gameIsRunning == true)
 {
-    Console.WriteLine(@$"Welcome to Space Exploration!Choose your spaceship type:
+    Console.WriteLine(@$"Welcome to Space Exploration! Choose your spaceship type:
         1 - Collect Spaceship;
         2 - Transport Spaceship;
         3 - War Spaceship");
@@ -107,15 +107,16 @@ while (gameIsRunning == true)
 
                 if (chosenSpaceship.GetType().ToString() == "space_exploration.CollectSpaceship")
                 {
-                    try{
-                    Console.WriteLine("Choose a resource: ");
-                    var spaceshipCollectConverted = (CollectSpaceship)chosenSpaceship;
-                    spaceshipCollectConverted.ChooseResource(chosenDestination);
-                    spaceshipCollectConverted.CollectResource(chosenDestination);
+                    try
+                    {
+                        Console.WriteLine("Choose a resource: ");
+                        var spaceshipCollectConverted = (CollectSpaceship)chosenSpaceship;
+                        spaceshipCollectConverted.ChooseResource(chosenDestination);
+                        spaceshipCollectConverted.CollectResource(chosenDestination);
                     }
                     catch (InsufficientResource exception)
                     {
-                        Console.WriteLine (exception.Message);
+                        Console.WriteLine(exception.Message);
                     }
                 }
 
@@ -148,12 +149,47 @@ while (gameIsRunning == true)
 
                 else
                 {
+
                     var spaceshipTransportConverted = (TransportSpaceship)chosenSpaceship;
-                    Console.WriteLine(@$"Spaceship passagers amount: {spaceshipTransportConverted.PassagersAmount}. 
-                    Spaceship actual planet: {chosenDestination.Name}.");
+                    bool setNewDestination = false;
+                    spaceshipTransportConverted.CurrentPlanet = chosenDestination.Name;
+                    Console.WriteLine(@$" You arrived on {chosenDestination.Name}. Choose your next destination: ");
+                    while (setNewDestination == false)
+                    {
+                        try
+                        {
+                            Console.WriteLine(@$"
+                            1- Venus;
+                            2- Mars;
+                            3 -Jupiter");
+                            var newDestinationChoice = int.Parse(Console.ReadLine());
+                            Planet newDestination = planets[newDestinationChoice];
+                            if (newDestination == chosenDestination)
+                            {
+                                Console.WriteLine("You have chose the actual planet. Choose a new destination.");
+                            }
+                            else {
+                                spaceshipTransportConverted.IsTraveling(newDestination.Name);
+                                setNewDestination = true;
+                            }
+
+                        }
+
+
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error: " + e.Message);
+                        }
+
+                        catch (KeyNotFoundException e)
+                        {
+
+                            Console.WriteLine("Error: " + e.Message);
+                        }
+
+                    }
 
                 }
-
 
 
             }

@@ -11,6 +11,11 @@ namespace space_exploration
 
         public string CurrentPlanet {get;set;}
 
+
+        public void IsTraveling (string planet){
+            Console.WriteLine ($"Traveling from {CurrentPlanet} to {planet}.");
+        }
+
          
     }
 }
