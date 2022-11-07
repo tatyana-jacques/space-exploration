@@ -1,20 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace space_exploration
+namespace space_exploration.Entities
 {
-    public class Star: CelestialBody, IOrbitable
+    public class Star : CelestialBody, IOrbitable
     {
 
-       
-        public float Temperature {get;set;}
-        public float Luminosity {get;set;}
-        public State StarState {get;set;}
+        public float Temperature { get; set; }
+        public float Luminosity { get; set; }
+        public State StarState { get; set; }
 
-public Dictionary <string,string> OrbitData(){
-        return new Dictionary <string,string>(){
+        public Dictionary<string, string> OrbitData()
+        {
+            return new Dictionary<string, string>(){
             {"Name", Name.ToString()},
             {"Size", Size.ToString()},
             {"Age", Age.ToString()},
@@ -26,6 +22,15 @@ public Dictionary <string,string> OrbitData(){
 
         };
 
-}
+        }
+
+        public void IsOrbitating()
+        {
+            Console.WriteLine("Now you are orbitating a star.");
+
+        }
+
     }
+
+
 }
